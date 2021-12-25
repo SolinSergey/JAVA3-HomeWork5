@@ -8,19 +8,14 @@ public class Tunnel extends Stage {
         try {
             try {
                 System.out.println(c.getName() + " готовится к этапу(ждет): " + description);
-                //if (description.startsWith("Тоннель")){
-                    MainClass.smp.acquire();
-                //}
+                MainClass.smp.acquire();
                 System.out.println(c.getName() + " начал этап: " + description);
                 Thread.sleep(length / c.getSpeed() * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 System.out.println(c.getName() + " закончил этап: " + description);
-                //if (description.startsWith("Тоннель")){
-                    MainClass.smp.release();
-                //}
-
+                MainClass.smp.release();
             }
         } catch (Exception e) {
             e.printStackTrace();
